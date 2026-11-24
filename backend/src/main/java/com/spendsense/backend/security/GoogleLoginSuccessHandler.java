@@ -1,4 +1,3 @@
-
 package com.spendsense.backend.security;
 
 import com.spendsense.backend.entity.AppUser;
@@ -8,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -22,6 +22,9 @@ import java.util.UUID;
 @Component
 public class GoogleLoginSuccessHandler
         implements AuthenticationSuccessHandler {
+
+    @Value("${app.frontend-url}")
+    private String frontendUrl;
 
     private final AppUserRepository users;
     private final JwtService jwtService;
@@ -71,9 +74,9 @@ public class GoogleLoginSuccessHandler
 
         String token = jwtService.generateToken(user);
 
-        String frontendUrl = "http://localhost:5174/oauth-callback";
+        String callbackUrl = frontendUrl + "/oauth-callback";
 
-        String redirectUrl = frontendUrl
+        String redirectUrl = callbackUrl
                 + "?token=" + encode(token)
                 + "&email=" + encode(user.getEmail())
                 + "&role=" + encode(user.getRole());
