@@ -1,8 +1,8 @@
 
 import { useState } from "react";
 
-const API_URL = "http://localhost:8080/api/auth";
-
+const BASE = import.meta.env.VITE_API_URL || "http://localhost:8080";
+const API_URL = `${BASE}/api/auth`;
 export default function Auth({ onAuthenticated }) {
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
@@ -62,8 +62,7 @@ export default function Auth({ onAuthenticated }) {
 
   function handleGoogleLogin() {
     window.location.href =
-      "http://localhost:8080/oauth2/authorization/google";
-  }
+`${BASE}/oauth2/authorization/google`;  }
 
   return (
     <div className="auth-card">

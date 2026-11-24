@@ -18,7 +18,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/transactions")
-@CrossOrigin(origins = "http://localhost:5173")
 public class TransactionController {
 
     private final TransactionRepository transactionRepository;

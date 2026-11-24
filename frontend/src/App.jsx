@@ -3,8 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import Auth from "./Auth";
 import "./App.css";
 
-const API_URL = "http://localhost:8080/api";
-
+const API_URL = `${import.meta.env.VITE_API_URL || "http://localhost:8080"}/api`;
 const money = (value) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
