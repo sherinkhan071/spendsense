@@ -71,7 +71,7 @@ public class GoogleLoginSuccessHandler
 
         String token = jwtService.generateToken(user);
 
-        String frontendUrl = "http://localhost:5175/oauth-callback";
+        String frontendUrl = "http://localhost:5174/oauth-callback";
 
         String redirectUrl = frontendUrl
                 + "?token=" + encode(token)

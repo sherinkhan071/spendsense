@@ -6,3 +6,5 @@ backend/node_modules/
 .env.*
 !.env.example
 .DS_Store
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-local.properties
